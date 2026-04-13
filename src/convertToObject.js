@@ -8,16 +8,16 @@
 function convertToObject(sourceString) {
   return sourceString
     .split(';')
-    .map((stil) => stil.trim())
-    .filter((stil) => stil)
-    .reduce((result, stil) => {
-      const [property, ...valueStil] = stil.split(':');
+    .map((styleEntry) => styleEntry.trim())
+    .filter((styleEntry) => styleEntry)
+    .reduce((stylesObject, styleEntry) => {
+      const [property, ...valueStyleEntry] = styleEntry.split(':');
 
-      if (property && valueStil.length) {
-        result[property.trim()] = valueStil.join(':').trim();
+      if (property && valueStyleEntry.length) {
+        stylesObject[property.trim()] = valueStyleEntry.join(':').trim();
       }
 
-      return result;
+      return stylesObject;
     }, {});
 }
 
